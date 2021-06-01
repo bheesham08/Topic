@@ -6,10 +6,17 @@
   <groupId>com.codeatomic.springbootquickstart</groupId>
   <artifactId>SpringBootQuickStart</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  
+	<packaging>jar</packaging>
   <name>Spring Boot Quick Start - Course API</name>
   <description>Spring Boot Quick Start - Java Brain Course API</description>
-  
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
   <parent>
   	<groupId>org.springframework.boot</groupId>
   	<artifactId>spring-boot-starter-parent</artifactId>
