@@ -6,7 +6,7 @@ pipeline {
 
                 steps {
                     withMaven {
-                        sh 'mvn clean'
+                        sh 'clean'
                     }
                 }
             }
@@ -15,7 +15,7 @@ pipeline {
 
             steps {
                 withMaven {
-                    sh 'mvn install'
+                    sh 'install'
                 }
             }
         }
@@ -24,7 +24,7 @@ pipeline {
 
             steps {
                 withMaven {
-                    sh 'mvn test'
+                    sh 'test'
                 }
             }
         }
@@ -33,7 +33,7 @@ pipeline {
         stage ('Deployment Stage') {
             steps {
                 withMaven {
-                    sh 'mvn deploy'
+                    sh 'deploy'
                 }
             }
         }
