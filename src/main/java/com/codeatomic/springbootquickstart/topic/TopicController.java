@@ -28,8 +28,8 @@ public class TopicController {
 		return topicService.getTopic(id);
 	}
 	
-	//@PostMapping("/topics")
-	@RequestMapping(method=RequestMethod.POST, value="/topics")
+	@PostMapping("/topics")
+	//@RequestMapping(method=RequestMethod.POST, value="/topics")
 	public String addTopic(@RequestBody Topic topic) {
 		topicService.addTopic(topic);
 		return "{\"success\": true, \"message\": Topic has been added successfully.}";
