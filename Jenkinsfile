@@ -17,37 +17,40 @@ pipeline {
                         }
                      }
                 }
-        stage ('Compile Stage') {
+            stage ('Compile Stage') {
 
-            steps {
-                withMaven(maven : 'MAVEN_HOME') {
-                    sh 'mvn clean compile'
+                steps {
+                    withMaven(maven : 'MAVEN_HOME') {
+                        sh 'mvn clean compile'
+                    }
                 }
             }
-        }
-        stage ('Package Stage') {
+             stage ('Package Stage') {
 
                     steps {
                         withMaven(maven : 'MAVEN_HOME') {
                             sh 'mvn package'
                         }
                     }
-                }
+             }
 
-        stage ('Testing Stage') {
+             stage ('Testing Stage') {
 
-            steps {
-                withMaven(maven : 'MAVEN_HOME') {
-                    sh 'mvn test'
-                }
-            }
-        stage ("deploy"){
-            steps{
-            withMaven(maven : 'MAVEN_HOME') {
-                     sh 'mvn deploy'
-                }
-            }
-        }
+                    steps {
+                        withMaven(maven : 'MAVEN_HOME') {
+                            sh 'mvn test'
+                        }
+                    }
+             }
+             stage ('Deploy Stage') {
+
+                   steps {
+                      withMaven(maven : 'MAVEN_HOME') {
+                           sh 'mvn deploy'
+                           }
+                      }
+             }
+
         }
     }
-}
+
