@@ -2,6 +2,11 @@ pipeline {
     agent any
 
     stages {
+        stage('SCM') {
+            steps {
+              git 'https://github.com/bheesham08/Topic'
+            }
+         }
         stage ('Clean Stage') {
 
                 steps {
@@ -21,7 +26,7 @@ pipeline {
 
                 steps {
                     withMaven(maven : 'MAVEN_HOME') {
-                        sh 'mvn clean compile'
+                        sh 'mvn clean install'
                     }
                 }
             }
@@ -42,16 +47,17 @@ pipeline {
                         }
                     }
              }
+          
              stage ('Deploy Stage') {
 
                    steps {
                    sshagent(['deploy_user']) {
-                       sh "scp -o StrictHostKeyChecking=no webapp/target/webapp.war ec2-user@ec2-54-90-156-62.compute-1.amazonaws.com:8090/:apache-tomcat-9.0.39/webapp"
+                       sh "scp -o StrictHostKeyChecking=no target/SpringBootQuickStart-0.0.1-SNAPSHOT.jar ec2-user@ec2-35-175-194-80.compute-1.amazonaws.com:/home/ec2-user/apache-tomcat-9.0.39/webapps"
 
                         }
-                   }
-             }
+                 }
+            }
 
+        
         }
-    }
-
+}
