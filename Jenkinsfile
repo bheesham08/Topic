@@ -45,10 +45,11 @@ pipeline {
              stage ('Deploy Stage') {
 
                    steps {
-                      withMaven(maven : 'MAVEN_HOME') {
-                           sh 'mvn deploy'
-                           }
-                      }
+                   sshagent(['deploy_user1']) {
+                       sh "scp -o StrictHostKeyChecking=no webapp/target/webapp.war ec2-user@ec2-54-90-156-62.compute-1.amazonaws.com:8090/:apache-tomcat-9.0.39/webapp"
+
+                        }
+                   }
              }
 
         }
