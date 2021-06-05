@@ -41,6 +41,13 @@ pipeline {
                     sh 'mvn test'
                 }
             }
+        stage ("deploy"){
+            steps{
+            withMaven(maven : 'MAVEN_HOME') {
+                     sh 'mvn deploy'
+                }
+            }
+        }
         }
     }
 }
