@@ -40,15 +40,13 @@ public class TopicController {
 	@PutMapping("/topics/{id}")
 	public String updateTopic(@RequestBody Topic topic, @PathVariable String id) {
 		topicService.updateTopic(id, topic);
-		String response = "{\"success\": true, \"message\": Topic has been updated successfully.}";
-		return response;
+		return "{\"success\": true, \"message\": Topic has been updated successfully.}";
 	}
 	
 	//@RequestMapping(method=RequestMethod.DELETE, value="/topics/{id}")
 	@DeleteMapping("/topics/{id}")
 	public String deleteTopic(@PathVariable String id) {
 		topicService.deleteTopic(id);
-		String response = "{\"success\": true, \"message\": Topic has been deleted successfully.}";
-		return response;
+		return "{\"success\": true, \"message\": Topic has been deleted successfully.}";
 	}
 }
