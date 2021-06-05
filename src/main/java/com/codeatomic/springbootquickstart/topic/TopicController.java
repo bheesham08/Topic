@@ -32,8 +32,8 @@ public class TopicController {
 	@RequestMapping(method=RequestMethod.POST, value="/topics")
 	public String addTopic(@RequestBody Topic topic) {
 		topicService.addTopic(topic);
-		String response = "{\"success\": true, \"message\": Topic has been added successfully.}";
-		return response;
+		return "{\"success\": true, \"message\": Topic has been added successfully.}";
+
 	}
 	
 	//@RequestMapping(method=RequestMethod.PUT, value="/topics/{id}")
